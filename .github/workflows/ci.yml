@@ -25,17 +25,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+
       - name: Run pylint
         run: | 
           pylint --fail-under 6 app
           exitcode="$?"
           echo "exitcode=$exitcode" >> $GITHUB_OUTPUT
           exit "$exitcode"
+
       - name: Run integration tests
         run: |
           pytest --maxfail=1 --disable-warnings -v
           coverage run -m pytest && coverage report -m
+
       - name: Teardown Docker
         if: always()
         run: docker-compose down
-
