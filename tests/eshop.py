@@ -6,7 +6,7 @@ class Product:
     price: float
 
     def __init__(self, name, price, available_amount):
-        if price != price and price <= 0 and isinstance(price, str):
+        if not isinstance(price, (int, float)) or price <= 0:
             raise ValueError(f"Invalid price: {price}")
         self.name = name
         self.price = price
@@ -26,7 +26,7 @@ class Product:
         return False
 
     def __ne__(self, other):
-        return self.name != other.name
+        return not self.__eq__(other)
 
     def __hash__(self):
         return hash((self.name, self.price))
@@ -45,7 +45,7 @@ class ShoppingCart:
         return product in self.products
 
     def calculate_total(self):
-        return sum([p.price * count for p, count in self.products.items()])
+        return sum(p.price * count for p, count in self.products.items())
 
     def add_product(self, product: Product, amount: int):
         if not product.is_available(amount):
@@ -63,15 +63,13 @@ class ShoppingCart:
         if new_amount <= 0:
             self.remove_product(product)
         else:
-            if product in self.products:
+            if product in self.products or new_amount > 0:
                 self.products[product] = new_amount
-            else:
-                self.add_product(product, new_amount)
 
     def submit_cart_order(self):
         for product, count in self.products.items():
             product.buy(count)
-        self.products = dict()
+        self.products.clear()
 
 
 class Order:

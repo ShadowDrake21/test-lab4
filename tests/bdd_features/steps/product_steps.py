@@ -23,15 +23,15 @@ def check_invalid_price_creation(context):
 #  Scenario: Availability check for a product
 @when("I check if the product is available with requested amount {amount}")
 def check_product_availability(context, amount):
-    context.is_available = context.product.is_available((int(amount)))
+    context.is_available = context.product.is_available(int(amount))
 
 @then("The availability check should return True")
-def verify_product_availability(context):
+def verify_product_is_available(context):
     assert context.is_available is True
 
 #  Scenario: Availability check for a product
 @then("The availability check should return False")
-def verify_product_availability(context):
+def verify_product_not_availability(context):
     assert context.is_available is False
 
 @given("A first product with name {name}, price {price}, and availability {availability}")
