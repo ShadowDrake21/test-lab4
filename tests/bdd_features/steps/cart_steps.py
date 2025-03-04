@@ -1,5 +1,5 @@
 from behave import given, when, then
-from tests.eshop import Product, ShoppingCart
+from app.eshop import Product, ShoppingCart
 
 #   Scenario: Successful add product to cart
 @given("The product has availability of {availability}")

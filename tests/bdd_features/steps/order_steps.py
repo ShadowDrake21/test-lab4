@@ -1,5 +1,5 @@
 from behave import when, then
-from tests.eshop import Order
+from app.eshop import  Order
 
 @when("I place an order with the cart")
 def place_order_with_cart(context):
