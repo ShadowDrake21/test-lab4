@@ -8,6 +8,9 @@ on:
 jobs:
   integration-tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9"]  # Define Python versions here
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
@@ -15,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: ${{ matrix.python-version }}  # Use matrix value
 
       - name: Install Docker Compose
         run: |
