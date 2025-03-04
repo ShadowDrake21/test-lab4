@@ -1,5 +1,5 @@
 import unittest
-from app.eshop import Product, ShoppingCart, Order
+from tests.eshop import Product, ShoppingCart, Order
 from unittest.mock import MagicMock
 
 class TestEshop(unittest.TestCase):

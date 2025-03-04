@@ -1,7 +1,7 @@
 import uuid
 
 import boto3
-from app.eshop import Product, ShoppingCart, Order
+from app.eshop import ShoppingCart, Product, Order
 import random
 from services import ShippingService
 from services.repository import ShippingRepository

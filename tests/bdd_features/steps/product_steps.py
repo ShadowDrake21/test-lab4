@@ -1,5 +1,5 @@
 from behave import given, when, then
-from app.eshop import Product
+from tests.eshop import Product
 
 #  Scenario: Successfully creating a product with valid data
 @given("A product with name {name}, price {price}, and availability {availability}")
