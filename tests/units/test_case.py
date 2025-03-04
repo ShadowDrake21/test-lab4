@@ -1,5 +1,5 @@
 import unittest
-from tests.eshop import Product, ShoppingCart,
+from tests.eshop import Product, ShoppingCart
 from unittest.mock import MagicMock
 class TestCalculator(unittest.TestCase):
     def setUp(self):
