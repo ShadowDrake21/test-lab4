@@ -14,7 +14,7 @@ class TestCalculator(unittest.TestCase):
         self.product.is_available.reset_mock()
     def test_add_available_amount(self):
         self.cart.add_product(self.product, 11)
-        self.assertEqual(self.cart.contains_product(self.product), True, 'Product was successfully added to the cart')
+        self.assertEqual(self.cart.contains_product(self.product), True, 'Product was added to the cart')
     def test_add_non_available_amount(self):
         with self.assertRaises(ValueError):
             self.cart.add_product(self.product, 22)
